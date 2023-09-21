@@ -6,6 +6,9 @@ import Highlight from '@components/Highlight'
 import Input from '@components/Input'
 import Filter from '@components/Filter'
 import PlayerCard from '@components/PlayerCard'
+import ListEmpty from '@components/ListEmpty'
+import Button from '@components/Button'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Players = () => {
 
@@ -13,7 +16,7 @@ const Players = () => {
     const [players, setPlayers] = useState(['Lukas', 'Felipe'])
 
     return (
-        <View className='flex-1 bg-gray-60 p-6'>
+        <SafeAreaView className='flex-1 bg-gray-60 p-6'>
             <Header
                 showBackButton />
             <Highlight
@@ -51,8 +54,13 @@ const Players = () => {
                         onRemove={() => { }} />
                 )}
                 className='mt-5'
+                ListEmptyComponent={() => (
+                    <ListEmpty message='Não há pessoas nesse time.' />
+                )}
+                showsVerticalScrollIndicator={false}
             />
-        </View>
+            <Button title='Remover turma' type='SECONDARY' />
+        </SafeAreaView>
     )
 }
 
